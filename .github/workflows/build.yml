@@ -11,13 +11,12 @@ on:
       - develop
 
 jobs:
-  Build-Deploy:
+  Build:
     runs-on: ubuntu-latest
-    env: 
-      version_suffix: ""
     steps:
     - name: Set Environment Variables
-      run: echo ::set-env name=VERSION_SUFFIX::$(date +%Y%m%d%H%M%S)
+      run: |
+        echo "version_suffix=$(date +%Y%m%d%H%M%S)" >> $GITHUB_ENV
     - uses: actions/checkout@v2
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
@@ -27,7 +26,7 @@ jobs:
       run: |
         mkdir ${{ github.workspace }}/package
         cd src
-        dotnet build --configuration Release --version-suffix CI-$VERSION_SUFFIX --output ${{ github.workspace }}/package
+        dotnet build --configuration Release --version-suffix CI-${{ env.version_suffix }} --output ${{ github.workspace }}/package
     - name: Upload Common Library CI Build
       uses: actions/upload-artifact@v1
       with:
