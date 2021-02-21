@@ -8,9 +8,6 @@ on:
     tags: 
       - '*'
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -27,7 +24,7 @@ jobs:
         run: dotnet tool install -g dotnetCampus.TagToVersion
 
       - name: Set tag to version  
-        run: dotnet TagToVersion -t ${{ github.ref }} src/build/Version.props
+        run: dotnet TagToVersion -t ${{ github.ref }} ${{ github.workspace }}/src/build/Version.props
       
       - name: Build with dotnet
         run: |
