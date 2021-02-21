@@ -11,7 +11,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  BuildTagAndRelease:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -19,21 +19,25 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-        
+      - name: Setup .NET Core 3.1
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.x'
+      - name: Setup .NET Core 5
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '5.0.x'
       - name: Install dotnet tool
         run: dotnet tool install -g dotnetCampus.TagToVersion
       - name: Set tag to version  
         run: |
           cd src
           dotnet TagToVersion -t ${{ github.ref }}
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '5.0.x'
+          
       - name: Build with dotnet
         run: |
           mkdir ${{ github.workspace }}/package
-          run: dotnet build --configuration Release --output ${{ github.workspace }}/package
+          dotnet build --configuration Release --output ${{ github.workspace }}/package
 
       - name: Install Nuget
         uses: nuget/setup-nuget@v1
