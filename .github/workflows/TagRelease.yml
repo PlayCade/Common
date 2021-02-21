@@ -37,6 +37,7 @@ jobs:
       - name: Build with dotnet
         run: |
           mkdir ${{ github.workspace }}/package
+          cd src
           dotnet build --configuration Release --output ${{ github.workspace }}/package
 
       - name: Install Nuget
