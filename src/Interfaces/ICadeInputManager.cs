@@ -5,7 +5,8 @@ namespace Cade.Common.Interfaces
 {
     public interface ICadeInputManager
     {
-        List<Input> inputs { get; }
-        int MaxPlayers { get; }
+        List<Input> Inputs();
+        void Update(List<Input> inputs);
+        int MaxPlayers();
     }
 }
