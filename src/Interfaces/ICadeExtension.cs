@@ -28,12 +28,13 @@ namespace Cade.Common.Interfaces
         /// <summary>
         /// Load method will setup any specific config before run
         /// </summary>
-        void Load();
+        /// <param name="path">path to content for running</param>
+        void Load(string path);
         
         /// <summary>
         /// Run method runs the extension
         /// </summary>
-        /// <param name="path">path to content for running</param>
-        void Run(string path);
+        
+        void Run();
     }
 }
