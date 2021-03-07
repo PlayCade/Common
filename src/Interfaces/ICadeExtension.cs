@@ -2,7 +2,7 @@ using System;
 
 namespace Cade.Common.Interfaces
 {
-    public interface ICadeMetadata
+    public interface ICadeExtension
     {
         /// <summary>
         /// Core specific Information
@@ -24,5 +24,8 @@ namespace Cade.Common.Interfaces
         /// Emulation specific information
         /// </summary>
         string[] SupportedFileExtensions { get; }
+
+        void Load();
+        void Run(string path);
     }
 }
