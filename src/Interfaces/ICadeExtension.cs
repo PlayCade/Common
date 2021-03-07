@@ -25,7 +25,15 @@ namespace Cade.Common.Interfaces
         /// </summary>
         string[] SupportedFileExtensions { get; }
 
+        /// <summary>
+        /// Load method will setup any specific config before run
+        /// </summary>
         void Load();
+        
+        /// <summary>
+        /// Run method runs the extension
+        /// </summary>
+        /// <param name="path">path to content for running</param>
         void Run(string path);
     }
 }
