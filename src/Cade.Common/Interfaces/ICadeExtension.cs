@@ -24,6 +24,8 @@ namespace Cade.Common.Interfaces
         /// Emulation specific information
         /// </summary>
         string[] SupportedFileExtensions { get; }
+        ICadeInputManager? InputManager { get; }
+        ICadeOutputManager? OutputManager { get; }
 
         /// <summary>
         /// Load method will setup any specific config before run
