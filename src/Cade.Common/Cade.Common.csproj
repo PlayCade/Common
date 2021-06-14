@@ -8,6 +8,6 @@
         <TargetFramework>NETStandard2.1</TargetFramework>
     </PropertyGroup>
     <ItemGroup>
-      <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+      <PackageReference Include="Veldrid" Version="4.8.0" />
     </ItemGroup>
 </Project>
