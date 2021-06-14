@@ -34,8 +34,8 @@ namespace Cade.Common.Interfaces
         /// </summary>
         public abstract string[] SupportedFileExtensions { get; }
 
-        public CadeInputManager InputManager { get; }
-        public CadeOutputManager OutputManager { get; }
+        public CadeInputManager InputManager { get; set; }
+        public CadeOutputManager OutputManager { get; set; }
 
         /// <summary>
         /// Load method will setup any specific config before run
