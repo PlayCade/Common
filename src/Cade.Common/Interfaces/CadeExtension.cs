@@ -47,5 +47,11 @@ namespace Cade.Common.Interfaces
         /// Run method runs the extension
         /// </summary>
         public abstract void Run();
+
+
+        /// <summary>
+        /// Close method cleans up a running extension
+        /// </summary>
+        public abstract void Close();
     }
 }
